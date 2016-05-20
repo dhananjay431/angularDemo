@@ -3,14 +3,14 @@
 angular.module('myDemoApp',[]);
   angular.module('myDemoApp')
   .service('fbRef', function() {
-  	var temp="mainData";
+  	var temp={};
   return {
   	sData:456,
-  	setSdata:function(){
-  		temp = "73_04";
-  	},
-  	getsData:function(){
-  		return temp;
+  	setSdata:function(data){
+  		temp[data.key]=data.value;
+    },
+  	getsData:function(data){
+  		return temp[data];
   	}
   };
 });
@@ -26,12 +26,26 @@ angular.module('myDemoApp')
   		//	 fbRef.setSdata(111);
   			 function a3()
   			 {
-  			 	fbRef.setSdata();
-  			 	DATA.mainData.a4=fbRef.getsData();
+  			 	fbRef.setSdata({key:'mainCtrl',value:'mainCtrl_123'});
+  			 	DATA.mainData.a4=fbRef.getsData('mainCtrl');
   			 }
-
   });
-
+angular.module('myDemoApp')
+  .controller('mainCtrl2', function(fbRef) {
+         var DATA = this;
+         DATA.mainData={
+          a1:"132_mainCtrl2",
+          a2:fbRef.sData,
+          a3:a3,
+          a4:""
+         };
+      //   fbRef.setSdata(111);
+         function a3()
+         {
+          fbRef.setSdata({key:'mainCtrl2',value:'mainCtrl_456'});
+          DATA.mainData.a4=fbRef.getsData('mainCtrl2');
+         }
+  });
 </script>
 <body ng-app="myDemoApp">
 	<div  ng-controller="mainCtrl as DATA">
@@ -43,4 +57,13 @@ angular.module('myDemoApp')
 	aa4:	{{DATA.mainData.a4}}	
 		</div>
 	</div>
+    <div  ng-controller="mainCtrl2 as DATA">
+  a1: {{DATA.mainData.a1}}
+  a2: {{DATA.mainData.a2}}
+    <div ng-init="DATA.mainData.a3()">
+  aa1:  {{DATA.mainData.a1}}
+  aa2:  {{DATA.mainData.a2}}  
+  aa4:  {{DATA.mainData.a4}}  
+    </div>
+  </div>
 </body>
