@@ -1,0 +1,51 @@
+<script  src="root/js/angular.min.js"></script>
+<script>
+angular.module('myDemoApp',[]);
+  angular.module('myDemoApp')
+  .service('fbRef', function() {
+  	var temp="mainData";
+  return {
+  	sData:456,
+  	setSdata:function(){
+  		temp = "73_04";
+  	},
+  	getsData:function(){
+  		return temp;
+  	}
+  };
+});
+angular.module('myDemoApp')
+  .controller('mainCtrl', function(fbRef) {
+  			 var DATA = this;
+  			 DATA.mainData={
+  			 	a1:132,
+  			 	a2:fbRef.sData,
+  			 	a3:a3,
+  			 	a4:""
+  			 };
+  		//	 fbRef.setSdata(111);
+  			 function a3()
+  			 {
+  			 	fbRef.setSdata();
+  			 	DATA.mainData.a4=fbRef.getsData();
+  			 }
+
+  });
+
+</script>
+<body ng-app="myDemoApp">
+	<div  ng-controller="mainCtrl as DATA">
+	a1:	{{DATA.mainData.a1}}
+	a2:	{{DATA.mainData.a2}}
+		<div ng-init="DATA.mainData.a3()">
+	aa1:	{{DATA.mainData.a1}}
+	aa2:	{{DATA.mainData.a2}}	
+	aa4:	{{DATA.mainData.a4}}	
+		</div>
+	</div>
+</body>
+<!-- 
+git config --global user.name "dhananjay431"
+git init
+git clone https://github.com/dhananjay431/angularDemo.git
+ -->
