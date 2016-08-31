@@ -1,0 +1,28 @@
+{
+  "name": "angulardemp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-inject": "^4.1.0",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.0",
+    "wiredep": "^4.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --hot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhananjay431/angularDemo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dhananjay431/angularDemo/issues"
+  },
+  "homepage": "https://github.com/dhananjay431/angularDemo#readme",
+  "description": ""
+}
