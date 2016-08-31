@@ -1,11 +1,9 @@
-<html>
+<html ng-app="app">
 <head>
   <!-- bower:css -->
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
   <!-- endbower -->
-</head>
-<body>
-  <!-- bower:js -->
+    <!-- bower:js -->
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-animate/angular-animate.js"></script>
   <script src="bower_components/angular-aria/angular-aria.js"></script>
@@ -13,5 +11,10 @@
   <script src="bower_components/angular-material/angular-material.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <!-- endbower -->
+  <script src="app/module.js"></script>
+  <script src="app/view/main/app.main.ctrl.js"></script>
+</head>
+<body ng-controller="main as vm">
+  <div ui-view></div>
 </body>
 </html>
