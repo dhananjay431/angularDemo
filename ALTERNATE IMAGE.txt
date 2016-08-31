@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<HEAD>
+<script>
+ function callfun(obj)
+ {
+        var noimg = "smiley.gif";
+        obj.src=noimg;
+}
+</script>
+
+</HEAD>
+<body>
+
+<img src="smi" alt="smiley.gif" width="42" height="42" onerror="this.onerror=null;callfun(this);">
+
+</body>
+</html>
+--base url ----
+var str = document.URL;
+var start =str.indexOf("js");
+var baseURL=str.slice(0 ,start);
