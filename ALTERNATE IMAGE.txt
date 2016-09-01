@@ -20,3 +20,27 @@
 var str = document.URL;
 var start =str.indexOf("js");
 var baseURL=str.slice(0 ,start);
+
+
+---ui state change
+  $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
+          
+          // if (toState.data && toState.data.redirect) {
+               
+          //      var redirectTo = $injector.invoke(toState.data.redirect);
+
+               
+          //      if (redirectTo) {
+                         
+          //                event.preventDefault();
+          //                $state.go(goToState);
+          //           }
+          //      }
+          console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+          console.log($rootScope.currentDirectory);
+          console.log(document.URL);
+          var str=document.URL;
+          str.indexOf("locate");
+
+
+          });
