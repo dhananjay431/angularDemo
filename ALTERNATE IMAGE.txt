@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html>
 <HEAD>
 <script>
@@ -44,3 +44,10 @@ var baseURL=str.slice(0 ,start);
 
 
           });
+
+          ////////////////redirect location///////////////////////
+                        var url=document.URL;
+                        var end=url.indexOf('search');
+                        var bpath=url.slice(0 ,end);
+                        window.location=bpath;
+                        $localStorage.$reset();
