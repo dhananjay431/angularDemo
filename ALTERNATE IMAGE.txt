@@ -51,3 +51,10 @@ var baseURL=str.slice(0 ,start);
                         var bpath=url.slice(0 ,end);
                         window.location=bpath;
                         $localStorage.$reset();
+        ///base path short url
+        document.URL.slice(0 ,document.URL.indexOf($scope.direcoryName))+$scope.direcoryName+'/news';
+
+angular $viewContentLoaded
+   $rootScope.$on('$viewContentLoaded', function() {
+                $templateCache.removeAll();
+            });
