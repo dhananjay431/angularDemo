@@ -53,7 +53,7 @@ var baseURL=str.slice(0 ,start);
                         $localStorage.$reset();
         ///base path short url
         document.URL.slice(0 ,document.URL.indexOf($scope.direcoryName))+$scope.direcoryName+'/news';
-
+window.location=document.URL;
 angular $viewContentLoaded
    $rootScope.$on('$viewContentLoaded', function() {
                 $templateCache.removeAll();
