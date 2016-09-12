@@ -1,0 +1,27 @@
+                var obj = { $and: [] }; // Do not delete this field // org collection
+                var obj1 = {};	//personal collection
+                var obj2 = {};	//exibision collection
+                var obj3 = {};	//  obj + obj1 +  obj2
+                var obj4 = {};	// temp use 
+                var obj5 = {};	// no need
+                var obj6 = { $and: [] };	// chapter specification 
+
+only org	query
+	console.log("In plain Organization");
+api	'subscriber/search/org-list',
+
+pass 
+	obj
+///////////////////////////////////
+persolal + org
+api	'subscriber/search/personnel/list'
+
+pass
+	obj3
+/////////////////////////////////
+per + org + exeb
+api	'subscriber/search/exhibition/list'
+
+pass 
+	obj3
+	
