@@ -1,0 +1,28 @@
+<html  ng-app="todoApp">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+        
+        <script>
+        angular.module('todoApp', [])
+  .controller('TodoListController', function($http) {
+        var vm=this;
+        vm.data={};
+        $http({
+            method: 'GET',
+            url: '/api/a/456'
+            }).success(function(data){
+                console.log(data);
+                vm.data=data;
+            }).error(function(data){
+                console.log(data);
+            });
+    });
+    </script>
+    </head>
+    
+    <body ng-controller="TodoListController as vm">
+        <h1>nrp</h1>
+        foo={{vm.data.foo}}<br>
+        bar={{vm.data.bar}}<br>
+    </body>
+</html>
