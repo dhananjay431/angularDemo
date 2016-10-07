@@ -4,9 +4,10 @@
   "description": "",
   "main": "a1.js",
   "dependencies": {
-    "path": "^0.12.7",
     "express": "^4.14.0",
-    "node-rest-client": "^2.0.1"
+    "express-mquery": "^0.2.1",
+    "node-rest-client": "^2.0.1",
+    "path": "^0.12.7"
   },
   "devDependencies": {},
   "scripts": {

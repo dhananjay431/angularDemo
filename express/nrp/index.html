@@ -9,7 +9,8 @@
         vm.data={};
         $http({
             method: 'GET',
-            url: '/api/a/456'
+            url: '/api/a/456',
+            headers:{csrf:Date.now()}
             }).success(function(data){
                 console.log(data);
                 vm.data=data;
@@ -24,5 +25,8 @@
         <h1>nrp</h1>
         foo={{vm.data.foo}}<br>
         bar={{vm.data.bar}}<br>
+        <div>
+            vm.postData={{vm.postData}}
+        </div>
     </body>
 </html>

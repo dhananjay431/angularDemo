@@ -1,27 +1,41 @@
 <html  ng-app="todoApp">
     <head>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/angular-datatables/0.5.5/css/angular-datatables.css">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    <script>
-        angular.module('todoApp', [])
-  .controller('TodoListController', function($http) {
-        var vm=this;
-        vm.data={};
-        $http({
-            method: 'GET',
-            url: 'api/a/456'
-            }).success(function(data){
-                console.log(data);
-                vm.data=data;
-            }).error(function(data){
-                console.log(data);
-            });
-    });
-    </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-resource/1.5.8/angular-resource.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-datatables/0.5.5/angular-datatables.js"></script>
+        <script  src="/static/all.js"></script>
     </head>
-    
+    <style>
+        
+        </style>
     <body ng-controller="TodoListController as vm">
-        <h1> admin </h1>
-        foo={{vm.data.foo}}<br>
-        bar={{vm.data.bar}}<br>
+           <table datatable="" dt-options="vm.dtOptions" dt-columns="vm.dtColumns"  class="table table-striped"></table>
+           {{vm.dtOptions}}
+           {{vm.dtColumns}}
+           <table>
+               <tr>
+                   <td>sadf</td>
+                   <td>sadf</td>
+                   <td>sadf</td>
+                <tr>
+                    <tr>
+                   <td>sadf</td>
+                   <td>sadf</td>
+                   <td>sadf</td>
+                <tr>
+                    <tr>
+                   <td>sadf</td>
+                   <td>sadf</td>
+                   <td>sadf</td>
+                <tr>
+
+           </table> 
+                <div>
+            vm.postData={{vm.postData}}
+        </div>          
     </body>
 </html>
