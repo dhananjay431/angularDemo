@@ -11,7 +11,7 @@
           var vm=this;
             $scope.d1={};
             vm.postData=dataDb.bpost.save({lname:'Zildjian'});
-            
+            vm.fakerData=dataDb.data.get();
             // vm.dtOptions = DTOptionsBuilder.fromSource(dataDb.query())
             // .withDataProp('ajax')
             // .withPaginationType('full_numbers');
@@ -43,6 +43,10 @@
                                 {
                                 save:{method:'POST',isArray:true,headers:{csrf:Date.now()}}
                                 }),
+                        data:$resource('api/fak',{},
+                                {
+                                get:{method:'GET',headers:{csrf:Date.now()}}
+                                })
 
                     };
                     return dataDb;

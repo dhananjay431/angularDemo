@@ -1,4 +1,4 @@
-
+var faker = require('faker');
 var a2 = require('./a2');
 var express = require('express');
 var mongoose = require('mongoose');
@@ -91,7 +91,31 @@ api.get('/getAll',function(req,res){
         res.send(data);     
 });
 })
+api.get('/fak',function(req,res){
+  var arr=[];
+  var city=[]; 
+  var data={};
+  for(var i=0;i<faker.random.number(500);i++)
+  {
+    city.push(faker.random.us_state_abbr())
+  }
+  for(var i=0;i<faker.random.number(500);i++)
+  {
+  var temp={
+    _id:i,
+    firstName:faker.Name.firstName(),
+    lastName:faker.Name.lastName(),
+    dob:faker.Date.past(1989),
+    randomCard:faker.Helpers.createCard(),
+    //imgUrl:faker.image.imageUrl()
+  }
+  arr.push(temp);
+  data.data=arr;
+  data.us_state_abbr=city;
 
+  }
+    res.send(data);
+});
 app.listen(3000);
 app.use('/api', api);
 app.use('/', appTemp);
