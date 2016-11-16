@@ -1,5 +1,7 @@
 console.log("7987sd987s878sd78sd78");
-        angular.module('todoApp', ['ngResource','datatables'])
+
+
+        angular.module('todoApp', ['ngResource','datatables','react'])
         .run(initDT)
         .controller('TodoListController',TodoListController)
         .factory('dataDb', dataDb);
@@ -11,8 +13,24 @@ console.log("7987sd987s878sd78sd78");
          function TodoListController($http,$scope,DTOptionsBuilder, DTColumnBuilder,DTColumnDefBuilder,dataDb) {
           var vm=this;
             $scope.d1={};
+            vm.react=React.createClass({
+                propTypes: {
+                    fname : React.PropTypes.string.isRequired,
+                    lname : React.PropTypes.string.isRequired
+                },
+                render: function() {
+                    return <span>Hello {this.props.fname} {this.props.lname}</span>;
+                }
+                });
+            vm.modal = document.getElementById('myModal');
+             $scope.person = { fname: 'Clark', lname: 'Kent' };
             vm.postData=dataDb.bpost.save({lname:'Zildjian'});
             vm.fakerData=dataDb.data.get();
+            vm.showmod=showmod;
+            vm.close=close;
+            
+            vm.specification=dataDb.specification.post({directoryId:'57189cc224d8bc65f4123bc1',specificationType:{$in:["INDUSTRY PREFERENCE","GEOGRAPHICAL PREFERENCES"]}});
+
             // vm.dtOptions = DTOptionsBuilder.fromSource(dataDb.query())
             // .withDataProp('ajax')
             // .withPaginationType('full_numbers');
@@ -28,6 +46,18 @@ console.log("7987sd987s878sd78sd78");
                     DTColumnBuilder.newColumn('ref.fname').withTitle('fname').withClass(),
                     DTColumnBuilder.newColumn('ref.lame').withTitle('hbyname').withClass()
                 ];
+                function showmod()
+                {
+                    
+                    vm.modal.style.display = "block";
+                    vm.modal.className="modal1";
+ 
+                    
+                }
+                function close()
+                {
+                      vm.modal.style.display = "none";
+                }
      
             }
                 dataDb.$inject = ['$resource'];
@@ -42,11 +72,23 @@ console.log("7987sd987s878sd78sd78");
                                 }),
                         bpost: $resource('api/post',{},
                                 {
-                                save:{method:'POST',isArray:true,headers:{csrf:Date.now()}}
+                                save:{
+                                    method:'POST',
+                                    isArray:true,
+                                    headers:{csrf:Date.now()},
+                                    transformRequest:function(data,headerGetter){
+                                        console.log('data',data);
+                                        return JSON.stringify(data);
+                                    }
+                                }
                                 }),
                         data:$resource('api/fak',{},
                                 {
                                 get:{method:'GET',headers:{csrf:Date.now()}}
+                                }),
+                        specification:$resource('http://192.168.0.74:5001/subscriber/search/chapter-specification',{},
+                                {
+                                post:{method:'POST'}
                                 })
 
                     };

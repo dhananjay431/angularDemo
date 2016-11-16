@@ -1,0 +1,18 @@
+db.txn_organizations.aggregate(
+          [
+            {$match:{"directoryId":ObjectId("57189b3e24d8bc65f4123bbf")}},
+            {$unwind: "$exhibition"},
+            {$lookup: {"from" : "txn_exhibitions", "localField" : "exhibition", "foreignField" : "_id", "as" : "exhibition"} },
+            {$unwind: "$exhibition"},
+            {$match:{
+                  $or:[	
+     			{"entityType":"Park Centennial Exhibit"},
+     			{"activities.freeText":"Park Centennial Exhibit"},
+			    {"exhibition.exhibitName":"Park Centennial Exhibit"},
+    	        {"features.name":"Park Centennial Exhibit","features.featureType":"COLLECTION"},
+    	        {"features.name":"Park Centennial Exhibit"},
+			    {"governing":"Park Centennial Exhibit"},
+			    {"research.description":"Park Centennial Exhibit"},
+				]}},
+            {$group: {"_id":1, "ids":{$push:"$_id"} } }
+          ])
